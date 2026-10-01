@@ -1,0 +1,19 @@
+[package]
+name = "monorepoprompt"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "CLI for MonorepoPrompt: layered phased context engine for monorepos"
+
+[[bin]]
+name = "monorepoprompt"
+path = "src/main.rs"
+
+[dependencies]
+monorepoprompt-core = { path = "../core" }
+anyhow.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml.workspace = true

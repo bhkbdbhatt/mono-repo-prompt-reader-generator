@@ -1,0 +1,42 @@
+# MonorepoPrompt configuration.
+# Place this file at the repository root (or any parent directory).
+
+role: "You are a senior platform architect with deep knowledge of this codebase."
+budget_tokens: 60000
+
+# How much source to include per file, by role.
+#   full    - entire file
+#   codemap - function/class/type signatures only
+#   slice   - first N tokens of the file
+#   drop    - exclude
+detail_defaults:
+  entry_points: full
+  shared_types: full
+  implementation: codemap
+  tests: slice
+
+exclude:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/target/**"
+  - "**/.next/**"
+  - "**/*.lock"
+  - "**/coverage/**"
+  - "**/__generated__/**"
+  - "**/*.snap"
+
+output_format: markdown
+
+# Emit the STATE block so multi-turn progressive reading can continue.
+state_block: true
+
+# Selection limits.
+min_files: 5
+max_files: 400
+
+# Budget reserved for the architecture map section.
+map_token_budget: 2000
+
+# Default line window when a slice is requested.
+slice_lines: 80
